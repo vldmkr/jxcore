@@ -107,7 +107,7 @@ def files(action):
     action([
       'out/Release/libjx.a',
       'out/Release/libcares.a',
-      'out/Release/libchrome_zlib.a',
+      'out/Release/libzlib.a',
       'out/Release/libhttp_parser.a',
       'out/Release/libopenssl.a',
       'out/Release/libuv.a',

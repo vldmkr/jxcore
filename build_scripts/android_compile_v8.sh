@@ -41,9 +41,9 @@ fi
 
 export ANDROID_NDK=$1
 
-MIPS=out_android/mipsel
+#MIPS=out_android/mipsel
 ARM7=out_android/arm
-INTEL64=out_android/x64
+#INTEL64=out_android/x64
 INTEL32=out_android/ia32
 FATBIN=out_android/android
 
@@ -59,7 +59,7 @@ MAKE_INSTALL() {
   mv out $TARGET_DIR
 
   mv $PREFIX_DIR/bin/libcares.a "$PREFIX_DIR/bin/libcares_$1.a"
-  mv $PREFIX_DIR/bin/libchrome_zlib.a "$PREFIX_DIR/bin/libchrome_zlib_$1.a"
+  mv $PREFIX_DIR/bin/libzlib.a "$PREFIX_DIR/bin/libzlib_$1.a"
   mv $PREFIX_DIR/bin/libhttp_parser.a "$PREFIX_DIR/bin/libhttp_parser_$1.a"
   mv $PREFIX_DIR/bin/libjx.a "$PREFIX_DIR/bin/libjx_$1.a"
   mv $PREFIX_DIR/bin/libv8_nosnapshot.a "$PREFIX_DIR/bin/libv8_nosnapshot_$1.a"
@@ -71,17 +71,17 @@ MAKE_INSTALL() {
 
 
 COMBINE() {
-  cp "$MIPS/bin/$1_mipsel.a" "$FATBIN/bin/"
+#  cp "$MIPS/bin/$1_mipsel.a" "$FATBIN/bin/"
   cp "$ARM7/bin/$1_arm.a" "$FATBIN/bin/"
-  cp "$INTEL64/bin/$1_x64.a" "$FATBIN/bin/"
+#  cp "$INTEL64/bin/$1_x64.a" "$FATBIN/bin/"
   cp "$INTEL32/bin/$1_ia32.a" "$FATBIN/bin/"
   ERROR_ABORT
 }
 
 
-mkdir out_mipsel_droid
+#mkdir out_mipsel_droid
 mkdir out_arm_droid
-mkdir out_x64_droid
+#mkdir out_x64_droid
 mkdir out_ia32_droid
 mkdir out_android
 
@@ -95,8 +95,8 @@ export CC=mipsel-linux-android-gcc
 export CXX=mipsel-linux-android-g++
 export LINK=mipsel-linux-android-g++
 
-LOG $GREEN_COLOR "Compiling Android MIPS\n"
-MAKE_INSTALL mipsel
+#LOG $GREEN_COLOR "Compiling Android MIPS\n"
+#MAKE_INSTALL mipsel
 
 export TOOLCHAIN=$PWD/android-toolchain-arm
 export PATH=$TOOLCHAIN/bin:$OLD_PATH
@@ -115,8 +115,8 @@ export CC=x86_64-linux-android-gcc
 export CXX=x86_64-linux-android-g++
 export LINK=x86_64-linux-android-g++
 
-LOG $GREEN_COLOR "Compiling Android INTEL64\n"
-MAKE_INSTALL x64
+#LOG $GREEN_COLOR "Compiling Android INTEL64\n"
+#MAKE_INSTALL x64
 
 export TOOLCHAIN=$PWD/android-toolchain-intel
 export PATH=$TOOLCHAIN/bin:$OLD_PATH
@@ -136,7 +136,7 @@ mv $ARM7/include $FATBIN/
 cp deps/mozjs/src/js.msg $FATBIN/include/node/
 
 COMBINE "libcares"
-COMBINE "libchrome_zlib"
+COMBINE "libzlib"
 COMBINE "libhttp_parser"
 COMBINE "libjx"
 COMBINE "libv8_nosnapshot"
@@ -147,9 +147,9 @@ COMBINE "libsqlite3"
 
 cp src/public/*.h $FATBIN/bin
 
-rm -rf $MIPS
+#rm -rf $MIPS
 rm -rf $ARM7
 rm -rf $INTEL32
-rm -rf $INTEL64
+#rm -rf $INTEL64
 
 LOG $GREEN_COLOR "JXcore Android binaries are ready under $FATBIN\n"
