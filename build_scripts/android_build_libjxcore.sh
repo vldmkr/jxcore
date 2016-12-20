@@ -21,9 +21,9 @@ fi
 ANDROID_NDK=$1
 DIR=${PWD}
 
-# bash ${DIR}/build_scripts/android-configure.sh ${ANDROID_NDK}
-# bash ${DIR}/build_scripts/android-fix-toolchain.sh
-# bash ${DIR}/build_scripts/android_compile_v8.sh ${ANDROID_NDK}
+bash ${DIR}/build_scripts/android-configure.sh ${ANDROID_NDK}
+bash ${DIR}/build_scripts/android-fix-toolchain.sh
+bash ${DIR}/build_scripts/android_compile_v8.sh ${ANDROID_NDK}
 bash ${DIR}/cordova_android/build.sh ${ANDROID_NDK} ${DIR}/out_android/android/bin
 
 rm -rf ${DIR}/out_libjxcore
