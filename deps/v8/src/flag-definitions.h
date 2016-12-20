@@ -136,12 +136,12 @@ DEFINE_bool(es5_readonly, true,
             "activate correct semantics for inheriting readonliness")
 DEFINE_bool(es52_globals, true,
             "activate new semantics for global var declarations")
-
-DEFINE_bool(harmony_typeof, false, "enable harmony semantics for typeof")
-DEFINE_bool(harmony_scoping, false, "enable harmony block scoping")
-DEFINE_bool(harmony_modules, false,
+// harmony flags set to true
+DEFINE_bool(harmony_typeof, true, "enable harmony semantics for typeof")
+DEFINE_bool(harmony_scoping, true, "enable harmony block scoping")
+DEFINE_bool(harmony_modules, true,
             "enable harmony modules (implies block scoping)")
-DEFINE_bool(harmony_proxies, false, "enable harmony proxies")
+DEFINE_bool(harmony_proxies, true, "enable harmony proxies")
 DEFINE_bool(harmony_collections, false,
             "enable harmony collections (sets, maps, and weak maps)")
 DEFINE_bool(harmony, false, "enable all harmony features (except typeof)")
